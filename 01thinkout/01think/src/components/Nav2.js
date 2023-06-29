@@ -12,7 +12,10 @@ const openNav=()=>{
 const closeNav=()=> {
     setStyle(closed)
 }
-
+const closeNavv=()=> {
+    setStyle(closed)
+    navigate('/chat')
+}
 const tryToLogout=()=>{
    const logoutt= window.confirm("You will be logged out!")
         if(logoutt){
@@ -25,6 +28,9 @@ const tryToLogout=()=>{
         }
     
 }
+const goToProfile=()=>{
+    navigate('/profile')
+}
     return (
         <>
         <header className="header-area header-sticky spaceBeforeAnything">
@@ -36,9 +42,9 @@ const tryToLogout=()=>{
         <a className="openbtn"></a>
         <ul className="nav">
         <li><a>Newsfeed</a></li>
-        <li><a>Chats</a></li>
+        <li><a onClick={()=>navigate('/chat')}>Chats</a></li>
         <li><a>My Lab</a></li>
-        <li><a>My Profile</a></li>
+        <li><a onClick={()=>navigate('/profile')}>My Profile</a></li>
         <li><a onClick={tryToLogout}>Logout</a></li>
         
         </ul>
@@ -47,9 +53,9 @@ const tryToLogout=()=>{
     
                 <br/><br/>
               <a onClick={closeNav}>Newsfeed</a>
-              <a onClick={closeNav}>Chats</a>
+              <a onClick={closeNavv}>Chats</a>
               <a onClick={closeNav}>My Lab</a>
-              <a onClick={closeNav}>My Profile</a>
+              <a onClick={goToProfile}>My Profile</a>
           <a onClick={tryToLogout}>Logout</a>                     
         </div>
         

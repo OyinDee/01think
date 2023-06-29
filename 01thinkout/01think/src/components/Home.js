@@ -17,7 +17,7 @@ export default function Home() {
     const token=localStorage.token
     const username=localStorage.username
     useEffect(() => {
-        axios.get('https://o1think.herokuapp.com/dashcheck', {
+        axios.get('https://newsapp-dpv1.onrender.com/dashcheck', {
             headers:{
                 'Authorization':`Bearer ${token}`,
                 'Content-Type':'application/json',
@@ -28,7 +28,7 @@ export default function Home() {
         if(localStorage.token&&response.data.message==='verification successful'){
             console.log(response)
         localStorage.username=response.data.username                         
-            axios.post('https://o1think.herokuapp.com/getUserType', {username: response.data.username}).then((response)=>{
+            axios.post('https://newsapp-dpv1.onrender.com/getUserType', {username: response.data.username}).then((response)=>{
                 console.log(response.data)
                 if(response.data===1){
                     navigate('/developers/home') 

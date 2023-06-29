@@ -26,7 +26,7 @@ export default function Login(){
             const  userDetails={
                 username, password
             }
-            axios.post('https://o1think.herokuapp.com/login', userDetails).then((response,err) => {              
+            axios.post('https://newsapp-dpv1.onrender.com/login', userDetails).then((response,err) => {              
                 console.log(response);
                 setMessage(response.data.message)
                 if(response.data.message=="Your login is successful!"){

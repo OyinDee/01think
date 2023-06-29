@@ -18,7 +18,7 @@ export default function Signup() {
     const [dort, setDort] = useState(false)                            
     const token=localStorage.token
     useEffect(() => {
-        axios.get('https://o1think.herokuapp.com/dashcheck', {
+        axios.get('https://newsapp-dpv1.onrender.com/dashcheck', {
             headers:{
                 'Authorization':`Bearer ${token}`,
                 'Content-Type':'application/json',
@@ -31,6 +31,7 @@ export default function Signup() {
             localStorage.username=response.data.username
         }
         else{
+            console.log("Nah")
         }
     }).catch((err)=>{
         console.log(err)
@@ -51,18 +52,16 @@ export default function Signup() {
             let userDetails={
                 fullname, email,username,password,zeroorone
             }
-            axios.post('https://o1think.herokuapp.com/signup', userDetails).then((response) => {
+            axios.post('https://newsapp-dpv1.onrender.com/signup', userDetails).then((response) => {
                 console.log(response);
                 if(response.data.text==="no"){
                 setMessage(response.data.message)
                 if(response.data.message==="Username already exists."){
                     setUsername('')
-                    setStyle("style1");
                     setLoading(false)        
                 }
                 else if(response.data.message==="Email already exists."){
-                    setEmail('')
-                    setStylee("style1");                
+                    setEmail('') 
                     setLoading(false)           
                 }
                 else if(response.data.message==="Email already exists."){
@@ -141,12 +140,12 @@ export default function Signup() {
 </div>
 <div className="col-lg-6 col-md-12 col-sm-12">
 <fieldset>
-<input name="email" type="email" className="form-control" id="email" className={stylee} placeholder="E-Mail Address" required="" value={email} onChange={(e)=>setEmail(e.target.value)} onFocus={unColour}/>
+<input name="email" type="email" className="form-control" id="email" placeholder="E-Mail Address" required="" value={email} onChange={(e)=>setEmail(e.target.value)} onFocus={unColour}/>
 </fieldset>
 </div>
     <div className="col-lg-6 col-md-12 col-sm-12">
     <fieldset>
-    <input name="username" type="username" className="form-control" className={style} id="username" placeholder="Your Username" required="" value={username} onChange={(e)=>setUsername(e.target.value)} onFocus={unColour}/>
+    <input name="username" type="username" className="form-control" id="username" placeholder="Your Username" required="" value={username} onChange={(e)=>setUsername(e.target.value)} onFocus={unColour}/>
     </fieldset>
     </div>
     <div className="col-lg-6 col-md-12 col-sm-12">

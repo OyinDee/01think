@@ -19,7 +19,7 @@ export default function Feedback() {
         }
         else{
             setRow(false)
-            axios.post('http://o1think.herokuapp.com/feedback', {email: email,fullname:fullname,feedback:feedback}).then( 
+            axios.post('https://newsapp-dpv1.onrender.com/feedback', {email: email,fullname:fullname,feedback:feedback}).then( 
                     setEmail(''),
                     setFeedback(''),
                     setFullname(''),

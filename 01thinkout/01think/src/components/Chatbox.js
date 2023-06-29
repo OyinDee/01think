@@ -16,7 +16,6 @@ export default function Chatbox({socket}) {
   const [allMessages, setAllMessages] = useState([])
   const [senderID, setSenderID] = useState('')
   
-  // const endpoint='http://localhost:1111/'
   const [firstMessage, setFirstMessage] = useState('')
   
   const tryToSendMessage=()=>{
@@ -47,7 +46,7 @@ export default function Chatbox({socket}) {
   const [newMessage, setNewMessage] = useState('')
 
   useEffect(() => {
-    axios.get('https://o1think.herokuapp.com/dashcheck', {
+    axios.get('https://newsapp-dpv1.onrender.com/dashcheck', {
       headers:{
         'Authorization':`Bearer ${token}`,
         'Content-Type':'application/json',
@@ -68,7 +67,7 @@ export default function Chatbox({socket}) {
 }).then(()=>{
 
   const username=localStorage.username
-  axios.post('https://o1think.herokuapp.com/chat',{username:username}).then(()=>{
+  axios.post('https://newsapp-dpv1.onrender.com/chat',{username:username}).then(()=>{
     
   })
 })
@@ -103,10 +102,22 @@ return (
                 <div className="card-body" data-mdb-perfect-scrollbar="true" style={{position: "relative",}}>
       
                 <div className="d-flex justify-content-between">
-                  <p className="small mb-1">Someone</p>
-                  <p className="small mb-1 text-muted">Today</p>
+
                 </div>
-                {allMessages.map((allMessages,i)=>{return allMessages.username===localStorage.username?(<div key={i} className="d-flex flex-row justify-content-end mb-4 pt-1"><div><p className="small p-2 me-3 mb-3 text-white rounded-3 bg-dark">{allMessages.body}</p></div></div>):(<div key={i} className="d-flex flex-row justify-content-start"><div><p className="small p-2 ms-3 mb-3 rounded-3" style={d}>{allMessages.body}</p></div></div>);
+                {allMessages.map((allMessages,i)=>{return allMessages.username===localStorage.username?(<div><div className="d-flex justify-content-between">
+              </div>
+              <div className="d-flex flex-row justify-content-end mb-4 pt-1">
+                <div>
+                  <p className="small p-2 me-3 mb-3 text-white rounded-3 bg-dark">{allMessages.body}</p>
+                </div>
+              </div></div>):(<div><div className="d-flex justify-content-between">
+                <p className="small mb-1">{allMessages.username}</p>
+              </div>
+              <div className="d-flex flex-row justify-content-start">
+                <div><p className="small p-2 ms-3 mb-3 rounded-3" style={{backgroundColor: "#f5f6f7"}}>{allMessages.body}</p>
+                </div>
+              </div>
+            </div>);
               })}
 
 

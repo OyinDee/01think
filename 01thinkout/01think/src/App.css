@@ -1,6 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 .App {
   text-align: center;
 }
+
 *{
   margin: 0;
   padding: 0;
@@ -22,7 +26,11 @@
   animation-name: rotate;
   animation-timing-function: ease-in;
 }
+.profile-picture{
+ 
+}
 .loadingornot{
+ 
   width: 100%;
   display: flex;
   justify-content: center;
